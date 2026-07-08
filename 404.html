@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <meta name="description" content="A página solicitada não foi encontrada.">
+    <title>Página não encontrada | Dra. Anna Carolina</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #0f1728;
+            --green: #17868b;
+            --green-deep: #163b54;
+            --clay: #f27d63;
+            --paper: #ffffff;
+            --muted: #5f6f7f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            font-family: "Plus Jakarta Sans", Arial, sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 15% 20%, rgba(205, 237, 236, 0.9), transparent 32rem),
+                linear-gradient(145deg, #fbfcfd 0%, #f3f8fa 100%);
+        }
+
+        .header {
+            padding: 1.2rem clamp(1.25rem, 4vw, 3rem);
+            background: rgba(255, 255, 255, 0.88);
+            border-bottom: 1px solid rgba(22, 59, 84, 0.1);
+        }
+
+        .logo {
+            color: var(--ink);
+            font-size: 1.24rem;
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--green);
+            font-size: 0.88em;
+        }
+
+        main {
+            display: grid;
+            place-items: center;
+            padding: 4rem 1.25rem;
+        }
+
+        .error-card {
+            width: min(100%, 720px);
+            padding: clamp(2rem, 6vw, 4.5rem);
+            text-align: center;
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid rgba(22, 59, 84, 0.1);
+            border-radius: 32px;
+            box-shadow: 0 30px 80px rgba(22, 59, 84, 0.12);
+        }
+
+        .code {
+            display: block;
+            margin-bottom: 1rem;
+            color: var(--clay);
+            font-size: clamp(4rem, 15vw, 8rem);
+            font-weight: 800;
+            line-height: 0.9;
+            letter-spacing: -0.08em;
+        }
+
+        h1 {
+            margin-bottom: 1rem;
+            font-size: clamp(2rem, 5vw, 3.3rem);
+            line-height: 1.08;
+            letter-spacing: -0.04em;
+        }
+
+        p {
+            max-width: 540px;
+            margin: 0 auto 2rem;
+            color: var(--muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .home-link {
+            display: inline-flex;
+            min-height: 50px;
+            align-items: center;
+            justify-content: center;
+            padding: 0.85rem 1.5rem;
+            color: var(--paper);
+            font-weight: 800;
+            text-decoration: none;
+            background: var(--green-deep);
+            border-radius: 999px;
+            transition: transform 180ms ease, background 180ms ease;
+        }
+
+        .home-link:hover {
+            background: var(--green);
+            transform: translateY(-2px);
+        }
+
+        .home-link:focus-visible {
+            outline: 3px solid var(--clay);
+            outline-offset: 4px;
+        }
+
+        footer {
+            padding: 1.5rem;
+            color: var(--muted);
+            font-size: 0.85rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a class="logo js-home-link" href="/" aria-label="Voltar à página inicial">
+            <span>Dra.</span> Anna Carolina
+        </a>
+    </header>
+
+    <main>
+        <section class="error-card" aria-labelledby="error-title">
+            <span class="code" aria-hidden="true">404</span>
+            <h1 id="error-title">Página não encontrada</h1>
+            <p>O endereço acessado não existe ou foi alterado. Retorne à página inicial para continuar navegando.</p>
+            <a class="home-link js-home-link" href="/">Voltar à página inicial</a>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 Dra. Anna Carolina Expósito Nunes
+    </footer>
+
+    <script>
+        (() => {
+            const isGitHubProjectPage = location.hostname.endsWith(".github.io");
+            const firstPathSegment = location.pathname.split("/").filter(Boolean)[0];
+            const homeUrl = isGitHubProjectPage && firstPathSegment
+                ? `${location.origin}/${firstPathSegment}/`
+                : `${location.origin}/`;
+
+            document.querySelectorAll(".js-home-link").forEach((link) => {
+                link.href = homeUrl;
+            });
+        })();
+    </script>
+</body>
+</html>
