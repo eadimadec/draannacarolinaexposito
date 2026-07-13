@@ -5,6 +5,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const hero = document.querySelector(".hero");
     const heroBg = document.querySelector(".hero-bg");
 
+    document.querySelectorAll('a[href*="wa.me/"]').forEach(link => {
+        link.addEventListener("click", () => {
+            if (typeof window.gtag === "function") {
+                window.gtag("event", "whatsapp_click");
+            }
+        });
+    });
+
     const setHeaderState = () => {
         if (!header) return;
         header.classList.toggle("scrolled", window.scrollY > 24);
